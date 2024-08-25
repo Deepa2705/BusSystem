@@ -10,14 +10,24 @@ import java.sql.*;
  * @author ELCOT
  */
 public class DbConnect {
-    public static Connection getConnection(){
-        Connection conn = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/safemate","root","");
-            } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+    public static Connection getConnection()  throws SQLException, ClassNotFoundException{
+        Connection con;
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/safemate","root","");
+        
+        String URL="jdbc:derby://localhost:1527/bussystem;user=root;password=root";
+        con = DriverManager.getConnection(URL);
+
+        return con;
+        
+    }
+    
+    public static void main(String[] args) throws SQLException, ClassNotFoundException{
+        Connection con=DbConnect.getConnection();
+        if(con!=null){
+            System.err.println("Connected to Database!!!");
+        }else{
+            System.out.println("Failed to connect");
         }
-        return conn;
     }
 }

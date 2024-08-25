@@ -8,6 +8,8 @@ package busSystem;
 import java.awt.Color;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -240,7 +242,9 @@ public class Parent extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 System.out.println(ex);
-            }
+            } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Parent.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_FindJourneyActionPerformed
 
     private void DetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetailsMouseEntered
@@ -273,7 +277,9 @@ public class Parent extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 System.out.println(ex);
-            }
+            } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Parent.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_DetailsActionPerformed
 
     /**

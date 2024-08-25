@@ -251,18 +251,23 @@ public class UpdateDriver extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
         String conid=did.getText().trim();
-        String PWD=pwd.getText().trim();
+//        String PWD=pwd.getText().trim();
         try{
-            String query="DELETE FROM DRIVER WHERE DID=? and PASSWORD=?";
+            String query="DELETE FROM DRIVER WHERE DID=?";
             PreparedStatement ps=(PreparedStatement)DbConnect.getConnection().prepareStatement(query);
             ps.setString(1, conid);
-            ps.setString(2, PWD);
+//            ps.setString(2, PWD);
             int rs=ps.executeUpdate();
 
             if(rs>0){
                 JOptionPane.showMessageDialog(null,"Driver Deleted successfully!");
             }else{
-                JOptionPane.showMessageDialog(null,"Driver not found!",null,JOptionPane.WARNING_MESSAGE);
+                if(conid.equals("")){
+                    JOptionPane.showMessageDialog(null,"Please provide Driver ID",null,JOptionPane.WARNING_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Driver not found!",null,JOptionPane.WARNING_MESSAGE);
+                }
+                
             }
         }catch(Exception e){
             System.out.println(e);
@@ -316,9 +321,14 @@ public class UpdateDriver extends javax.swing.JFrame {
 
             int rs=ps.executeUpdate();
 
-            if(rs>0){
-                JOptionPane.showMessageDialog(null,"Driver added successfully!");
+            if(driverid.equals("") || nam.equals("") || mobile.equals("") || pass.equals("")){
+                JOptionPane.showMessageDialog(null,"Please provide all details to add driver.",null,JOptionPane.WARNING_MESSAGE);
+            }else{
+                if(rs>0){
+                    JOptionPane.showMessageDialog(null,"Driver added successfully!");
+                }
             }
+            
         }catch(Exception e){
             System.out.println(e);
         }

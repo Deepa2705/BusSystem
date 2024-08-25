@@ -306,7 +306,7 @@ public class TicketIssue extends javax.swing.JFrame {
 
     //static String conduct=Conductor.conductor;
     
-    public  void IssueTicket(String fw,String tw){
+    public  void IssueTicket(String fw,String tw) throws ClassNotFoundException{
         //String fw=from.getSelectedItem().toString();
         //String tw=to.getSelectedItem().toString();
         String mail=email.getText();
@@ -371,10 +371,14 @@ public class TicketIssue extends javax.swing.JFrame {
     }//GEN-LAST:event_toMouseClicked
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        // TODO add your handling code here:
-        String fw=from.getSelectedItem().toString();
-        String tw=to.getSelectedItem().toString();
-        IssueTicket(fw,tw);
+        try {
+            // TODO add your handling code here:
+            String fw=from.getSelectedItem().toString().toLowerCase();
+            String tw=to.getSelectedItem().toString().toLowerCase();
+            IssueTicket(fw,tw);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TicketIssue.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_submitActionPerformed
 
     /**

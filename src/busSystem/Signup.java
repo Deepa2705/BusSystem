@@ -306,7 +306,7 @@ public class Signup extends javax.swing.JFrame {
         else{
             if(rol.equals("Passenger")){
                 try{
-                    String query="INSERT INTO PASSENGER(USERNAME,PASSWORD,NAME,PHONE,AGE,EMAIL) VALUES(?,?,?,?,?,?)";
+                    String query="INSERT INTO PASSENGER(USERNAME,PASSWORD,NAME,PHONENumber,AGE,EMAIL) VALUES(?,?,?,?,?,?)";
                     PreparedStatement ps=(PreparedStatement)DbConnect.getConnection().prepareStatement(query);
                     ps.setString(1,user);
                     ps.setString(2,pwd);
@@ -368,7 +368,7 @@ public class Signup extends javax.swing.JFrame {
                         EmailSend.sendEmail(mail,nam,"Register","","");
                     }
                     
-                    String query1="INSERT INTO PASSENGER (USERNAME,PASSWORD,NAME,PHONE,AGE,EMAIL) VALUES(?,?,?,?,?,?)";
+                    String query1="INSERT INTO PASSENGER (USERNAME,PASSWORD,NAME,PhoneNumber,AGE,EMAIL) VALUES(?,?,?,?,?,?)";
                     ps=(PreparedStatement)DbConnect.getConnection().prepareStatement(query1);
                     ps.setString(1,user);
                     ps.setString(2,pwd);
